@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNHS Attendance</title>
+  <style>
+h1{
+  text-align: center;
+}     
+.snhs-form {
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #adadaa;
+  border-radius: 5px;
+}
+
+.snhs-input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #adadaa;
+  border-radius: 3px;
+}
+
+.snhs-button {
+  width: 95%;
+  padding: 10px;
+  background-color: #009933;
+  color: #ffffff;
+  border: 1px solid #009933;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.snhs-button:hover {
+  background-color: #00cc66;
+  color: #ffffff;
+}
+  </style>
+</head>
+
+<form
+  method="POST"
+  action="https://script.google.com/macros/s/AKfycbykDilTlnwrffSpmzvLl-klLW6ES68NXZon7HYy-Encrkp595qvHRV2vM9JluQIoaEFzw/exec"
+  class="snhs-form"
+  id = "my-form"
+>
+   <h1>Just for funsies</h1><br>
+  <input
+    name="Name"
+    type="text"
+    placeholder="Name"
+    required
+    class="snhs-input"
+  />
+      <input
+    name="Text"
+    type="text"
+    placeholder="Text"
+    required
+    class="snhs-input"
+  />
+  <button type="submit" class="snhs-button">
+    Send
+  </button>
+</form>
+<script>
+window.addEventListener("load", function() {
+  const form = document.getElementById('my-form');
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const action = e.target.action;
+    fetch(action, {
+      method: 'POST',
+      body: data,
+    })
+    .then(() => {
+      alert("Success!");
+      location.reload();
+    })
+  });
+});
+   
+</script>
+</html>
